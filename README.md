@@ -1,5 +1,7 @@
 # tapebox
 
+![logo](res/img/tapebox_logo.png)
+
 Tapebox - A GUI for tape
 
 ## Build

@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -22,6 +23,9 @@
         <BorderPane BorderPane.alignment="CENTER">
             <center>
                 <ImageView fitHeight="64.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                    <image>
+                        <Image url="@tapebox_f4f4f4.png" />
+                    </image>
                 </ImageView>
             </center>
             <top>
