@@ -2,6 +2,7 @@ package com.github.tapebox;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -9,9 +10,13 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class MainController {
+
+    @FXML
+    private JFXButton chooseBtn;
 
     @FXML
     private JFXButton runBtn;
@@ -20,17 +25,31 @@ public class MainController {
     private JFXButton exitBtn;
 
     @FXML
-    private JFXTextArea inputArea;
+    private JFXTextField pathField;
+
+    @FXML
+    private JFXTextField txField;
+
+    @FXML
+    private JFXTextField durationField;
+
+    @FXML
+    private Label tpsLabel;
 
     @FXML
     private JFXTextArea outputArea;
 
     @FXML
+    void onChooseBtnClick(ActionEvent event) {
+
+    }
+
+    @FXML
     void onRunBtnClick(ActionEvent event) {
-        String inputText = inputArea.getText();
+        String inputText = pathField.getText();
 
         if (inputText.equals("")) {
-            inputArea.setPromptText("Please enter some text here.");
+            pathField.setPromptText("Please choose a config file.");
             return;
         } else {
             runBtn.setDisable(true);
