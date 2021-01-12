@@ -23,3 +23,11 @@ Tapebox - A GUI for tape
   ```bash
   mvn javafx:run
   ```
+
+## Screenshot
+
+<p align="center"><img src="./res/img/tapebox_screenshot.png" width="512"></p>
+
+## License
+
+Tapebox is licensed under the MIT License.
