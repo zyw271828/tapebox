@@ -1,5 +1,7 @@
 package com.github.tapebox;
 
+import java.io.File;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -11,6 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
 public class MainController {
@@ -41,7 +45,16 @@ public class MainController {
 
     @FXML
     void onChooseBtnClick(ActionEvent event) {
-        // TODO: unimplemented method
+        FileChooser fileChooser = new FileChooser();
+
+        fileChooser.setTitle("Choose Config File");
+        fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Config Files", "*.yaml"),
+                new ExtensionFilter("All Files", "*.*"));
+
+        File selectedFile = fileChooser.showOpenDialog((Stage) chooseBtn.getScene().getWindow());
+        if (selectedFile != null) {
+            pathField.setText(selectedFile.getAbsolutePath());
+        }
     }
 
     @FXML
