@@ -1,14 +1,25 @@
 package com.github.tapebox;
 
+import java.io.File;
+
 public class Helper {
     static boolean isFileExist(String filePath) {
-        // TODO: unimplemented method
-        return true;
+        File f = new File(filePath);
+
+        if (f.isFile()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     static boolean isNumber(String str) {
-        // TODO: unimplemented method
-        return true;
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     static String getTx(String str) throws Exception {
