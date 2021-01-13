@@ -41,17 +41,28 @@ public class MainController {
 
     @FXML
     void onChooseBtnClick(ActionEvent event) {
-
+        // TODO: unimplemented method
     }
 
     @FXML
     void onRunBtnClick(ActionEvent event) {
-        String inputText = pathField.getText();
+        String filePath = pathField.getText();
+        String tx = txField.getText();
 
-        if (inputText.equals("")) {
-            pathField.setPromptText("Please choose a config file.");
+        if (filePath.equals("")) {
+            outputArea.setPromptText("Please choose a config file.");
+            return;
+        } else if (!Helper.isFileExist(filePath)) {
+            outputArea.setPromptText("The config file does not exist.");
+            return;
+        } else if (tx.equals("")) {
+            outputArea.setPromptText("Please enter tx.");
+            return;
+        } else if (!Helper.isNumber(tx)) {
+            outputArea.setPromptText("Please enter tx as a number.");
             return;
         } else {
+            chooseBtn.setDisable(true);
             runBtn.setDisable(true);
             exitBtn.setDisable(true);
 
@@ -59,16 +70,23 @@ public class MainController {
                 @Override
                 protected Boolean call() {
                     try {
+                        String output = TapeRunner.runTape(filePath, tx);
+                        outputArea.setText(output);
+                        txField.setText(Helper.getTx(output));
+                        durationField.setText(Helper.getDuration(output));
+                        String tps = Helper.getTps(output);
+
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                outputArea.setText(inputText);
+                                tpsLabel.setText(tps);
                             }
                         });
                     } catch (Exception e) {
                         outputArea.setText(e.getMessage());
                     }
 
+                    chooseBtn.setDisable(false);
                     runBtn.setDisable(false);
                     exitBtn.setDisable(false);
 
